@@ -1,0 +1,29 @@
+<div *ngIf="isLoggedIn">
+    <ul class="nav">
+        <li class="nav-item justify-content-center nav-tabs">
+          <a class="nav-link active" routerLink="/home">EPL Simulator</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/table">Table</a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Log Out</a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link disabled" routerLink="/home">Log In</a>
+        </li>
+      </ul>
+</div>
+<div *ngIf="!isLoggedIn">
+    <ul class="nav">
+        <li class="nav-item justify-content-center">
+          <a class="nav-link active" routerLink="/login">EPL Simulator</a>
+        </li>
+      </ul>
+</div>
