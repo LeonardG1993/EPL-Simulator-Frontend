@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { url } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { User } from 'src/models/user';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class AuthService {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login (username: string, password: string): Observable<any> {
     const payload = {username, password}
@@ -23,7 +24,7 @@ export class AuthService {
   }
 
   logout(): void{
-    this.http.post(`${this.url}/logout`, null);
+    this.router.navigate(['/']);
   }
 
 

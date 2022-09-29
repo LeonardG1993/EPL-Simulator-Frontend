@@ -1,0 +1,15 @@
+#card{
+    width: 40%;
+    height: 220px;
+    background-color: rgb(247, 221, 247);
+    box-shadow: 10px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 8%;
+}
+
+.form-group{
+    margin: 7px;
+}
+
+
