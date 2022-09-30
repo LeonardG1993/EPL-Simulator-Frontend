@@ -1,1 +1,55 @@
-<p>home works!</p>
+<h3 class="text-center heading"><b>Welcome to the EPL Simulator</b></h3>
+<br>
+<button type="button" class="btn btn-primary text-center align-center" id="how-it-works" data-toggle="modal" data-target="#explanationModal">
+    How It Works
+  </button>
+  
+  
+  <div class="modal fade" id="explanationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">How It Works</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="home-card">
+    <h5 class="text-center">Make a Prediction:</h5>
+    <div class="prediction-card">
+        <form class="text-center align-center" id="new-prediction">
+            <div class="form-group">
+              <label for="first"><b>First</b></label>
+              <select type="search" class="form-control text-center" id="first" placeholder="1st">
+                <option value="">team 1</option>
+                <option value="">team 2</option>
+                <option value="">team 3</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="username"><b>Second</b></label>
+                <input type="search" class="form-control text-center" id="second" placeholder="2nd">
+            </div>
+            <div class="form-group">
+                <label for="username"><b>Third</b></label>
+                <input type="search" class="form-control text-center" id="third" placeholder="3rd">
+            </div>
+            <div class="form-group">
+                <label for="username"><b>Fourth</b></label>
+                <input type="search" class="form-control text-center" id="fourth" placeholder="4th">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Predict</button>
+         </form>
+    </div>
+
+</div>

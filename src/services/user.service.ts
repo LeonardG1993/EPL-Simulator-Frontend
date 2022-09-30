@@ -11,6 +11,7 @@ import { User } from 'src/models/user';
 export class UserService {
 
   userUrl: string = url + `/user`;
+  registerUrl: string = url + `/login/register`;
   predictionUrl: string = url + `/prediction/user`;
 
   httpOptions = {
@@ -30,7 +31,7 @@ export class UserService {
   }
 
   registerUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.userUrl}`, user, this.httpOptions)
+    return this.http.post<User>(`${this.registerUrl}`, user, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

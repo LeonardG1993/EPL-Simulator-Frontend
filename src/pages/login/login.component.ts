@@ -1,4 +1,8 @@
+import { RegisterComponent } from './../register/register.component';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
+import { AuthService } from 'src/services/auth.service';
 
 
 declare var window: any;
@@ -10,8 +14,11 @@ declare var window: any;
 })
 export class LoginComponent implements OnInit {
   formModal: any;
+  user: AppComponent = new AppComponent;
+  isLoggedIn: boolean = this.user.isLoggedIn;
+  
 
-  constructor() { }
+  constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.formModal = new window.bootstrap.Modal(
@@ -19,12 +26,23 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  logIn(){
+    this.isLoggedIn = true;
+    this.router.navigate(['/home']);
+  }
+
   openModal(){
+    this.router.navigate(['/login/register']);
     this.formModal.show();
   }
 
   closeModal(){
     this.formModal.hide();
+  }
+
+  closeAndRegister(){
+    this.auth.registerUser();
+    this.closeModal();
   }
 
 
