@@ -20,14 +20,10 @@ export class AuthService {
   private userService: UserService = new UserService(this.http);
 
   user: User = new User(0, ``, ``, 0, []);
-  registrationForm = this.fb.group({
-    username: [``, Validators.required, Validators.minLength(6)],
-    password: [``, Validators.required, Validators.minLength(6)],
-  });
+  
 
   constructor(private http: HttpClient,
-    private router: Router, 
-    private fb: FormBuilder) { }
+    private router: Router) { }
 
   login (username: string, password: string): Observable<any> {
     const payload = {username, password}
@@ -39,14 +35,7 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  registerUser() {
-    this.userService.registerUser(this.user)
-    .subscribe(
-      data => this.clientMessage.message = `Successfully Registered ${data.username}`,
-      error => this.clientMessage.message = `Something went wrong: Error ${error}`
-    )
-
-  }
+  
 
 
 

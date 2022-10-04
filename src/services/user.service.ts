@@ -11,7 +11,7 @@ import { User } from 'src/models/user';
 export class UserService {
 
   userUrl: string = url + `/user`;
-  registerUrl: string = url + `/login/register`;
+  registerUrl: string = url + `/register`;
   predictionUrl: string = url + `/prediction/user`;
 
   httpOptions = {

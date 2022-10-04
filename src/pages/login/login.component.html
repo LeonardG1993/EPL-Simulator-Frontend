@@ -28,16 +28,19 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form [formGroup]="registrationForm">
+            Value: {{ registrationForm.value | json }}
             <div class="form-group">
               <label for="username" class="col-form-label">Username</label>
-              <input type="text" class="form-control" 
-              placeholder="Enter New Username" id="recipient-name">
+              <input type="text" class="form-control" [(ngModel)]="user.username" 
+              placeholder="Enter New Username" id="recipient-name"
+              formControlName="username">
             </div>
             <div class="form-group">
               <label for="password" class="col-form-label">Password</label>
-              <input class="form-control" type="password"
-              placeholder="Enter New Password" id="new-password">
+              <input class="form-control" [(ngModel)]="user.password" type="password"
+              placeholder="Enter New Password" id="new-password"
+              formControlName="password">
             </div>
           </form>
         </div>
