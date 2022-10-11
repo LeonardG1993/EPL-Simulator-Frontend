@@ -1,1 +1,38 @@
-<p>register works!</p>
+<div class="modal fade" id="exampleModal" tabindex="-1"
+   role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enter Your Details:</h5>
+          <button type="button" class="close" (click)="closeModal()" 
+          data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="registrationForm">
+            Value: {{ registrationForm.value | json }}
+            <div class="form-group">
+              <label for="username" class="col-form-label">Username</label>
+              <input type="text" class="form-control" [(ngModel)]="user.username" 
+              placeholder="Enter New Username" id="recipient-name"
+              formControlName="username">
+            </div>
+            <div class="form-group">
+              <label for="password" class="col-form-label">Password</label>
+              <input class="form-control" [(ngModel)]="user.password" type="password"
+              placeholder="Enter New Password" id="new-password"
+              formControlName="password">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" 
+          data-dismiss="modal" (click)="closeModal()">Close</button>
+          <button type="button" class="btn btn-primary" 
+          (click)="closeAndRegister()">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

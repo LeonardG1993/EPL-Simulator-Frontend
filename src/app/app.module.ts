@@ -1,3 +1,4 @@
+import { RegisterComponent } from 'src/pages/register/register.component';
 import { LoginComponent } from 'src/pages/login/login.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +14,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [RegisterComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
