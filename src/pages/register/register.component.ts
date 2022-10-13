@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   user: User = new User(0, ``, ``, 0, []);
   clientMessage: ClientMessage = new ClientMessage('');
   registrationForm!: FormGroup;
+  warningTextMessage : string = '';
 
 
   constructor(private fb: FormBuilder, private userService: UserService,
@@ -60,28 +61,35 @@ export class RegisterComponent implements OnInit {
   }
 
   closeAndRegister(){
-    console.log('clicked');
+    if(this.registrationForm.get('username')?.value === ''){
+      this.warningTextMessage = 'Please enter a username'
+    } else if (this.registrationForm.get('password')?.value === ''){
+      this.warningTextMessage = 'Please enter a password'
+    } else{
+      console.log('clicked');
     this.registerUser();
     console.log('registering');
     this.closeModal();
+    }
+    
   }
 
   openModal(){
     this.formModal.show();
   }
 
-  closer() {
-    window.addEventLister(
-      'click',
-    (event: { target: { closest: (arg0: string) => any; }; })=> {
-      if (!event.target.closest(".modal"))
-      {
-        this.closeModal()
-      }
-    })
-    this.router.navigate(['/login']);
+  // closer() {
+  //   window.addEventLister(
+  //     'click',
+  //   (event: { target: { closest: (arg0: string) => any; }; })=> {
+  //     if (!event.target.closest(".modal"))
+  //     {
+  //       this.closeModal()
+  //     }
+  //   })
+  //   this.router.navigate(['/login']);
 
-  }
+  // }
   
 
   

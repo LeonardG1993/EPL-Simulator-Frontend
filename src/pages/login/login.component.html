@@ -1,17 +1,41 @@
 <div id="card">
-  <form class="text-center align-center">
+  <form class="text-center align-center"
+  #loginForm="ngForm" name="form" (ngSubmit)="logIn()">
     <div class="form-group">
       <label for="username"><b>Username</b></label>
       <input type="text" class="form-control text-center" 
-      id="username" aria-describedby="emailHelp" placeholder="Enter Username">
+      id="username" aria-describedby="emailHelp" 
+      placeholder="Enter Username" [(ngModel)]="form.username"
+      required name="username" minlength="6"
+      #username="ngModel">
+      <div class="alert alert-danger" *ngIf="loginForm.touched && username.errors">
+        <div *ngIf="username.errors!['minlength']">
+          Username must be at least 6 characters
+        </div>
+        <div *ngIf="username.errors!['required']">
+          Username is required
+        </div>
+
+      </div>
     </div>
     <div class="form-group">
       <label for="password"><b>Password</b></label>
       <input type="password" class="form-control text-center" 
-      id="password" placeholder="Enter Password">
+      id="password" placeholder="Enter Password"
+      [(ngModel)]="form.password" required name="password"
+      minlength="6" #password="ngModel">
+      <div class="alert alert-danger" *ngIf="loginForm.touched && password.errors">
+        <div *ngIf="password.errors!['required']">
+          Password is required
+        </div>
+        <div *ngIf="password.errors!['minlength']">
+          Password must be at least 6 characters
+        </div>
+      </div>
     </div>
     <br>
-    <button type="submit" class="btn btn-primary" (click)="logIn()">Login</button>
+    <button type="submit" class="btn btn-primary"
+    [disabled]="!loginForm.valid">Login</button>
  </form>
 </div>
 <br>

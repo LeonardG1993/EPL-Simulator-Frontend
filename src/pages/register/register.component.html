@@ -14,23 +14,59 @@
             Value: {{ registrationForm.value | json }}
             <div class="form-group">
               <label for="username" class="col-form-label">Username</label>
-              <input type="text" class="form-control" [(ngModel)]="user.username" 
-              placeholder="Enter New Username" id="recipient-name"
-              formControlName="username">
+              <input type="text" class="form-control" 
+              [(ngModel)]="user.username" 
+              placeholder="Enter New Username" 
+              id="recipient-name"
+              required
+              formControlName="username" 
+              minlength="6">
+              <div class="alert alert-danger"
+              *ngIf="registrationForm.controls['username'].invalid 
+              && registrationForm.controls['username'].touched">
+               <div class="alert alert-danger"
+                *ngIf="registrationForm.controls['username'].errors!['minlength']">
+                 Username must be at least 6 characters
+                </div>
+                <div class="alert alert-danger"
+                *ngIf="registrationForm.controls['username'].errors!['required']">
+                 Username is required
+                </div>
+            </div>
+              
             </div>
             <div class="form-group">
               <label for="password" class="col-form-label">Password</label>
-              <input class="form-control" [(ngModel)]="user.password" type="password"
-              placeholder="Enter New Password" id="new-password"
-              formControlName="password">
+              <input class="form-control" 
+              [(ngModel)]="user.password" 
+              type="password"
+              placeholder="Enter New Password" 
+              id="new-password"
+              required
+              formControlName="password" 
+              minlength="6">
+               <div class="alert alert-danger" 
+               *ngIf="registrationForm.controls['password'].touched 
+               && registrationForm.controls['password'].invalid">
+                 <div class="alert alert-danger" 
+                 *ngIf="registrationForm.controls['password'].errors!['minlength']">
+                   Password must be at least 6 characters
+                 </div>
+                 <div class="alert alert-danger"
+                *ngIf="registrationForm.controls['password'].errors!['required']">
+                  Password is required
+                </div>
+               </div>
             </div>
           </form>
         </div>
+        <h5 class="alert">{{ this.warningTextMessage }}</h5>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" 
           data-dismiss="modal" (click)="closeModal()">Close</button>
           <button type="button" class="btn btn-primary" 
-          (click)="closeAndRegister()">Register</button>
+          (click)="closeAndRegister()"
+          >Register</button>
         </div>
       </div>
     </div>
