@@ -24,7 +24,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [RegisterComponent],
+  providers: [
+    RegisterComponent,
+    NavbarComponent,
+    LoginComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

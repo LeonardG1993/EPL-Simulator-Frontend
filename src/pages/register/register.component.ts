@@ -41,11 +41,23 @@ export class RegisterComponent implements OnInit {
     return this.registrationForm.get('username');
   }
 
+  set setUsername(username: string){
+     this.user.username = username
+  }
+
   get getPassword() {
     return this.registrationForm.get('password');
   }
 
+  set setPassword(password: string){
+    this.user.password = password
+ }
+
   registerUser() {
+    
+    this.user.username = this.registrationForm.get('username')?.value;
+    this.user.password = this.registrationForm.get('password')?.value;
+    
     this.userService.registerUser(this.user)
     .subscribe(
       data => this.clientMessage.message = `Successfully Registered ${data.username}`,
@@ -61,11 +73,19 @@ export class RegisterComponent implements OnInit {
   }
 
   closeAndRegister(){
+    console.log(this.registrationForm.get('username')?.value);
+    console.log(this.registrationForm.get('password')?.value);
     if(this.registrationForm.get('username')?.value === ''){
       this.warningTextMessage = 'Please enter a username'
     } else if (this.registrationForm.get('password')?.value === ''){
       this.warningTextMessage = 'Please enter a password'
-    } else{
+    } else if (this.registrationForm.get('username')?.value.length < 6){
+      this.warningTextMessage = 'Username must be at least 6 characters'
+    } else if (this.registrationForm.get('password')?.value.length < 6){
+      this.warningTextMessage = 'Password must be at least 6 characters'
+    } else {
+      console.log(this.registrationForm.get('username')?.value);
+      console.log(this.registrationForm.get('password')?.value);
       console.log('clicked');
     this.registerUser();
     console.log('registering');

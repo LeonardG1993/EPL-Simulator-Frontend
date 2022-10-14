@@ -1,3 +1,4 @@
+import { LoginComponent } from 'src/pages/login/login.component';
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 
@@ -9,9 +10,9 @@ import { AppComponent } from 'src/app/app.component';
 export class NavbarComponent implements OnInit {
   user: AppComponent = new AppComponent;
 
-  isLoggedIn: boolean = this.user.isLoggedIn
+  isLoggedIn: boolean = this.logIn.isLoggedIn
 
-  constructor() { }
+  constructor(private logIn: LoginComponent) { }
 
   ngOnInit(): void {
   }

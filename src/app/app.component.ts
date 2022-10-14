@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 
 
 export class AppComponent {
-  title = 'epl-simulator-frontend-api';
-  isLoggedIn: boolean = false;
+  title = 'epl-simulator-frontend-api'
   
 }

@@ -1,3 +1,4 @@
+import { NavbarComponent } from 'src/components/navbar/navbar.component';
 import { RegisterComponent } from './../register/register.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,7 +12,7 @@ import { AuthService } from 'src/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   app: AppComponent = new AppComponent;
-  isLoggedIn: boolean = this.app.isLoggedIn;
+  isLoggedIn: boolean = false;
   username: string = '';
   password: string = '';
   loginErrMsg: string = '';
@@ -28,6 +29,11 @@ export class LoginComponent implements OnInit {
   }
 
   logIn(){
+    console.log(this.form.username);
+    console.log(this.form.password);
+    
+    this.username = this.form.username
+    this.password = this.form.password
 
     if(!this.username.trim() || !this.password.trim()) {
       this.loginErrMsg = 'Failed Login';
@@ -60,7 +66,10 @@ export class LoginComponent implements OnInit {
       
     } else if (response){
       console.log(response)
+      console.log(this.isLoggedIn);
+      
       this.isLoggedIn = true;
+      console.log(this.isLoggedIn);
       this.router.navigate(['/home']);
       return;
     }    
