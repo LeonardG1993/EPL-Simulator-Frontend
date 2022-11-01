@@ -8,8 +8,7 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  user: AppComponent = new AppComponent;
-
+  
   isLoggedIn: boolean = this.logIn.isLoggedIn
 
   constructor(private logIn: LoginComponent) { }
@@ -20,5 +19,6 @@ export class NavbarComponent implements OnInit {
   logOut(){
     return this.isLoggedIn = false  
   }
+  
 
 }
